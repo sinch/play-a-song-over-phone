@@ -1,6 +1,6 @@
 #Sending a song to your friend thru a phone call
 
-Last week we where sponsoring thenextweb hackathon in NYC, one idea from Gerb from there was to user the deezer API to send a song to a friend over the phone. We couldn't really get it to work that weekend. But now we figured it out and I wanted to share it with you guys on how you can manipulate the AudioStreams in the Sinch JS SDK. So here you go Herb.
+Last week we where sponsoring thenextweb hackathon in NYC, one idea from Herb from there was to user the Deezer API to send a song to a friend over the phone. We couldn't really get it to work that weekend. But now we figured it out and I wanted to share it with you guys on how you can manipulate the AudioStreams in the Sinch JS SDK. So here you go Herb.
 
 ## Preparation
 1. Download the JS SDK from http://sinch.com/download/
@@ -25,7 +25,7 @@ sinchClient = new SinchClient({
 	applicationKey: 'your appkey',
 	capabilities: {calling: true},
 	//supportActiveConnection: true, /* NOTE: This is only required if application is to receive calls / instant messages. */ 
-	//Note: For additional loging, please uncomment the three rows below
+	//Note: For additional logging, please uncomment the three rows below
 	onLogMessage: function(message) {
 		console.log(message);
 	},
@@ -38,10 +38,10 @@ I want to play the song and be able to speak to my friend and the same time, the
 var audioCtx = new AudioContext();
 ```
 
-Next we want to crate a dynamicscompressor, this will level the volume on the tracks so you both hear the song and and speach. For more info about this see [http://www.w3.org/TR/webaudio/#DynamicsCompressorNode]()
+Next we want to crate a dynamicscompressor, this will level the volume on the tracks so you both hear the song and and speech. For more info about this see [http://www.w3.org/TR/webaudio/#DynamicsCompressorNode]()
 ```
 var compressor = audioCtx.createDynamicsCompressor();
-Next we want to create a source for the song and the microphone and hook it up to a media desti 
+Next we want to create a source for the song and the microphone and hook it up to a media destination
 //this will be the stream we broadcast in our call.
 var destination = audioCtx.createMediaStreamDestination(); 
 var song = audioCtx.createMediaElementSource($('audio#song')[0]);
