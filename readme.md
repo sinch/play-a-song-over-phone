@@ -9,7 +9,7 @@ Last week we sponsored [The Next Web hackathon](http://thenextweb.com/conference
 4. Name your app, and click 'create'
 5. Take note of your app key and secret, you will need them in a few minutes
 
-## Let's code
+## Time to Code
 First, add your favorite song to the folder. I am adding [Something New](https://www.youtube.com/watch?v=BhJSsX5AKPI) by Axwell and Ingrosso, and naming it `somethingnew.m4a`
 
 Open up `index.html` and add an audio element to the page just under the incoming tag:
