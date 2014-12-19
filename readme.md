@@ -39,7 +39,7 @@ I want to play the song and be able to speak to my friend at the same time. The 
 var audioCtx = new AudioContext();
 ```
 
-Next, we want to create a dynamics compressor; this will level the volume on the tracks so you hear the song and the speech. For more info about this see [http://www.w3.org/TR/webaudio/#DynamicsCompressorNode]()
+Next, we want to create a dynamics compressor; this will level the volume on the tracks so you hear the song and the speech. For more info about this see [http://www.w3.org/TR/webaudio/#DynamicsCompressorNode](http://www.w3.org/TR/webaudio/#DynamicsCompressorNode)
 
 ```
 var compressor = audioCtx.createDynamicsCompressor();
