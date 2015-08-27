@@ -1,16 +1,16 @@
-#Send a song to your friend through a phone call
+#Send a Song to Your Friend Through a Phone Call
 
-Last week we sponsored [The Next Web hackathon](http://thenextweb.com/conference/usa/hack-battle) in NYC. We met a developer, Herb, who had an idea to use the Deezer API to send a song to a friend over the phone. We couldn't get it to work that weekend, but now we figured it out and I want to share with you how to manipulate the AudioStreams in the Sinch JS SDK. So, here you go [Ivo](https://twitter.com/ilukac)!
+Last week, we sponsored [The Next Web hackathon](http://thenextweb.com/conference/usa/hack-battle) in New York City. We met a developer, Herb, who had an idea to use the Deezer API to send a song to a friend over the phone. We couldn't get it to work that weekend, but we’ve now figured it out. Here I’ll share with you how to manipulate the AudioStreams in the Sinch JS SDK. So, here you go, [Ivo](https://twitter.com/ilukac)!
 
 ## Preparation
 1. [Sign up](#signup) for a Sinch account
 2. Download the JS SDK from [http://sinch.com/download/](https://www.sinch.com/downloads/#downloads-javascript)
-3. Click 'create new app'
-4. Name your app, and click 'create'
-5. Take note of your app key and secret, you will need them in a few minutes
+3. Click 'Create new app'
+4. Name your app and click 'Create'
+5. Take note of your app key and secret as you will need them in a few minutes
 
-## Time to Code
-First, add your favorite song to the folder. I am adding [Something New](https://www.youtube.com/watch?v=BhJSsX5AKPI) by Axwell and Ingrosso, and naming it `somethingnew.m4a`
+## Time to code
+First, add your favorite song to the folder. I’m adding [Something New](https://www.youtube.com/watch?v=BhJSsX5AKPI) by Axwell and Ingrosso and naming it `somethingnew.m4a`.
 
 Open up `index.html` and add an audio element to the page just under the incoming tag:
 
@@ -18,7 +18,7 @@ Open up `index.html` and add an audio element to the page just under the incomin
 <audio id="song" src='somthingnew.m4a'></audio>
 ```
 
-Open up the `SinchPSTNsample/PSTNSample.js`, and enter your app key on line 24:
+Open up the `SinchPSTNsample/PSTNSample.js` and enter your app key on line 24:
 
 ```
 sinchClient = new SinchClient({
@@ -39,7 +39,7 @@ I want to play the song and be able to speak to my friend at the same time. The 
 var audioCtx = new AudioContext();
 ```
 
-Next, we want to create a dynamics compressor; this will level the volume on the tracks so you hear the song and the speech. For more info about this see [http://www.w3.org/TR/webaudio/#DynamicsCompressorNode](http://www.w3.org/TR/webaudio/#DynamicsCompressorNode)
+Next, we want to create a dynamics compressor; this will level the volume on the track so you can hear the song and the speech. For more info about this see [http://www.w3.org/TR/webaudio/#DynamicsCompressorNode](http://www.w3.org/TR/webaudio/#DynamicsCompressorNode).
 
 ```
 var compressor = audioCtx.createDynamicsCompressor();
@@ -65,7 +65,7 @@ navigator.getUserMedia({video: false, audio: true}, function(stream) {
 });
 ```
 
-Next, we need to change the call function to broadcast our custom stream instead of just hooking up to the microphone.
+We need to change the call function to broadcast our custom stream instead of just hooking up to the microphone.
 
 Change `call = callClient.callPhoneNumber()` to this:
 
@@ -73,7 +73,7 @@ Change `call = callClient.callPhoneNumber()` to this:
 call = callClient.callPhoneNumber($('input#phoneNumber').val(), {}, destination.stream);
 ```
 
-Now, we want to start playing the song as soon as the other party answers. In `onCallEstablished` add 
+We want to start playing the song as soon as the other party answers. In `onCallEstablished` add 
 
 ```
 $('audio#song').trigger("play");
@@ -101,3 +101,4 @@ path/to/chrome yourfilename.html --allow-file-access-from-files
 open -a path/to/chrome yourfilename.html --args --allow-file-access-from-files
 ```
 
+There you have it! You can now play a song to a friend over the phone.
